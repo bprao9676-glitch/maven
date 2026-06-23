@@ -9,5 +9,5 @@ steps:
 - script: cd /home/azureuser/myagent/_work/1/s;mvn package
   displayName: Build
 - script: scp /home/azureuser/myagent/_work/1/s/webapp/target/webapp.war azureuser@130.107.50.30:/var/lib/tomcat10/webapp/mytestapp.war
-
+  displayName: DeployToqa
 
