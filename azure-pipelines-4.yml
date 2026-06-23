@@ -7,8 +7,10 @@ pool:
 
 steps:
 - script: cd /home/azureuser/myagent/_work/1/s;mvn package
-  displayName: Build
-- script: echo "azureuser@12345" | sudo -S cp /home/azureuser/myagent/_work/1/s/webapp/target/webapp.war /var/lib/tomcat10/webapps/mytestapp.war
+  displayName: build
+- script: 
+    sudo apt-get update && sudo apt-get install -y sshpass
+    sshpass -p "azureuser@12345" scp -o StrictHostKeyChecking=no /home/azureuser/myagent/_work/1/s/webapp/target/webapp.war azureuser@130.107.50.30:/var/lib/tomcat10/webapps/mytestapp.war
+  displayName: 'DeployToqa'
 
-  displayName: DeployToqa
 
